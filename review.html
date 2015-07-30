@@ -1,0 +1,40 @@
+<html>
+
+<head>
+    <title>Team 254 Scouting</title>
+    <script src="./js/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./css/main.css">
+    <link rel="stylesheet" type="text/css" href="./semantic/semantic.min.css">
+    <script src="./semantic/semantic.min.js"></script>
+    <script src="./js/fastclick.js"></script>
+    <script src="./js/review.js"></script>
+    <script src="./js/render_header.js"></script>
+</head>
+
+<body onload="render()">
+    <div class="mainContainer ui page grid" style="margin: 10px;" id="maingrid">
+        <div class="sixteen wide column">
+            <div class="ui segment">
+                <h1>Review Data</h1>
+                <div style="text-align: center;">
+                    <table class="ui celled table">
+                        <thead>
+                            <tr id="headers">
+
+                            </tr>
+                        </thead>
+                        <tbody id="tbody">
+                        </tbody>
+                    </table>
+                    <div class="ui buttons">
+                        <div class="ui button">Download CSV</div>
+                        <div class="or"></div>
+                        <div class="ui negative button" onclick="localStorage.init = false; localStorage.sets = '{}'; location.reload();">Clear Data</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
