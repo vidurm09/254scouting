@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <title>254 Scouting</title>
+    <link href='./css/semantic/dist/semantic.min.css' rel='stylesheet' type='text/css'>
+    <link href='./css/main.css' rel='stylesheet' type='text/css'>
+    <script src='./js/angular.min.js'></script>
+    <script src='./js/angular-route.min.js'></script>
+  </head>
+  <body ng-app="ScoutingApp">
+    <div class="ui top menu">
+      <div class="item">
+        <img src="/images/logo.png">
+      </div>
+      <a class="item">Create a Teamplate</a>
+      <a class="item">Scout</a>
+      <a class="item">Review</a>
+    </div>
+    
+    <div ng-view></div>
+
+    <!-- Modules -->
+    <script src="js/app.js"></script>
+    <!-- Controllers -->
+    <script src="js/controllers/HomeController.js"></script>
+    <script src="js/controllers/TemplateController.js"></script>
+    <!-- Services -->
+    <script src="js/services/templates.js"></script>
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src='./css/semantic/dist/semantic.min.js'></script>
+  </body>
+</html>
