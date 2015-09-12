@@ -8,14 +8,14 @@
   </head>
   <body ng-app="ScoutingApp">
     <div class="ui top menu">
-      <div class="item">
+      <a href="#/" class="item">
         <img src="/images/logo.png">
-      </div>
-      <a class="item">Create a Teamplate</a>
+      </a>
+      <a class="item" href="#/template/create">Create a Template</a>
       <a class="item">Scout</a>
       <a class="item">Review</a>
     </div>
-    
+
     <div ng-view></div>
 
     <!-- Modules -->
@@ -23,8 +23,10 @@
     <!-- Controllers -->
     <script src="js/controllers/HomeController.js"></script>
     <script src="js/controllers/TemplateController.js"></script>
+    <script src="js/controllers/CreateController.js"></script>
     <!-- Services -->
     <script src="js/services/templates.js"></script>
+    <script src="js/services/components.js"></script>
     <script src="js/jquery-1.11.3.min.js"></script>
     <script src='./css/semantic/dist/semantic.min.js'></script>
   </body>

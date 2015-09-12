@@ -1,9 +1,10 @@
 var eventSchema = new Schema({
   name: {type: String, required: true},
-  scouting-team: {type: String, required: true},
-  tempate: {type: ObjectId, required: true},
+  scoutingteam: {type: String, required: true},
+  template: {type: String, required: true},
   startDate: Date,
-  endDate: Date
+  robotevents: String,
+  teams: [String]
 });
 
 var Event = mongoose.model('Event', eventSchema);

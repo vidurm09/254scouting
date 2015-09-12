@@ -1,0 +1,29 @@
+<div class="ui page grid">
+  <div class="sixteen wide column">
+    <div class="ui segment">
+      <form class="ui form">
+        <div class="field">
+          <label>Template Title:</label>
+          <input type="text" name="template-title" placeholder="Title">
+        </div>
+        <div class="field">
+          <label>Template Description</label>
+          <textarea rows='3'></textarea>
+        </div>
+        <div class="ui grid">
+          <div class="eight wide column" ng-repeat="component in components">
+            <div class="field">
+              <label>{{ component.name }} - {{ component.desc }}</label>
+              <div class="ui fluid action input">
+                <input type="text" placeholder="Label">
+                <button class="ui teal right icon button">
+                  <i class="plus icon"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
