@@ -1,0 +1,7 @@
+{
+  "text" : {
+    "desc" : "A simple input box",
+    "id" : 0,
+    "insert" : "<div class='ui input'><input type='text' placeholder='{{ component.title }}'></div>"
+  }
+}
