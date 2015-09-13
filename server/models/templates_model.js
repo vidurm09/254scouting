@@ -2,7 +2,7 @@ var templateSchema = new Schema({
   title: {type: String, required: true, unique: true},
   description: {type: String},
   author: {type: String, required: true},
-  components: {type: Object, required: true},
+  components: [{}],
   featured: {type: Boolean, required: false}
 });
 

@@ -1,6 +1,7 @@
 var Template = require('./models/templates_model');
 
 exports.createTemplate = function(req, res) {
+  console.log(req.body);
   var newTemplate = new Template({
     title: req.body.title,
     description: req.body.description,

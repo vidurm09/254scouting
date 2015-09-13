@@ -60,5 +60,26 @@ app.controller('CreateController', ['$scope', 'components', '$sce', function($sc
         setTimeout(function(){$('.ui.rating').rating(); console.log("1")}, 20);
       }
     };
+
+    $scope.commitTemplate = function() {
+      for(var i = 0; i < $scope.templatecomp.length; i++)
+        delete $scope.templatecomp[i]["$$hashKey"]
+      $scope.settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "http://localhost:8080/api/template",
+        "method": "POST",
+        "headers": {},
+        "data": {
+          "title": $scope.templatetitle,
+          "author": $scope.templateauthor,
+          "description": $scope.templatedesc,
+          "components": JSON.stringify($scope.templatecomp)
+        }
+      }
+      $.ajax($scope.settings).done(function (response) {
+        console.log(response);
+      });
+    };
   });
 }]);

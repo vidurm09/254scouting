@@ -2,13 +2,19 @@
   <div class="sixteen wide column">
     <div class="ui segment">
       <form class="ui form">
-        <div class="field">
-          <label>Template Title:</label>
-          <input type="text" name="template-title" placeholder="Title">
+        <div class="two fields">
+          <div class="field">
+            <label>Template Title</label>
+            <input type="text" name="template-title" ng-model="templatetitle" placeholder="Title">
+          </div>
+          <div class="field">
+            <label>Author</label>
+            <input type="text" name="template-title" ng-model="templateauthor" placeholder="Author">
+          </div>
         </div>
         <div class="field">
           <label>Template Description</label>
-          <textarea rows='3'></textarea>
+          <textarea rows='3' ng-model="templatedesc"></textarea>
         </div>
         <div class="ui grid">
           <div class="sixteen wide column">
@@ -77,6 +83,11 @@
           </div>
         </div>
       </form>
+      <div class="sixteen wide grid ui centered" style="padding-bottom: 5px;">
+        <button class="ui positive button" ng-click="commitTemplate();">
+          Save
+        </button>
+      </div>
     </div>
   </div>
   <div class="four wide column" ng-repeat="component in templatecomp">
