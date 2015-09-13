@@ -1,5 +1,5 @@
 /*angular.module('ScoutingApp', ['ngRoute']);*/
-var app = angular.module('ScoutingApp', ['ngRoute']);
+var app = angular.module('ScoutingApp', ['ngRoute', 'ngSanitize']);
 app.config(function ($routeProvider) {
   $routeProvider
     .when('/', {
@@ -18,3 +18,8 @@ app.config(function ($routeProvider) {
       redirectTo: '/'
     });
 });
+app.filter('to_trusted', ['$sce', function($sce){
+  return function(text) {
+    return $sce.trustAsHtml(text);
+  };
+}]);

@@ -11,19 +11,108 @@
           <textarea rows='3'></textarea>
         </div>
         <div class="ui grid">
-          <div class="eight wide column" ng-repeat="component in components">
-            <div class="field">
-              <label>{{ component.name }} - {{ component.desc }}</label>
-              <div class="ui fluid action input">
-                <input type="text" placeholder="Label">
-                <button class="ui teal right icon button">
-                  <i class="plus icon"></i>
-                </button>
+          <div class="sixteen wide column">
+            <div class="two fields">
+              <div class="field">
+                <label>Textbox</label>
+                <div class="ui fluid action input">
+                  <input type="text" placeholder="Label" ng-model="textlabel">
+                  <button class="ui teal right icon button" ng-click="addText();">
+                    <i class="plus icon"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="ui vertical divider">
+              </div>
+              <div class="field">
+                <div class="ui fluid form">
+                  <div class="two fields">
+                    <div class="field">
+                      <label>Counter</label>
+                      <input placeholder="Label" type="text" ng-model="counterlabel">
+                    </div>
+                    <div class="field">
+                      <label>Increment By (Integers Only)</label>
+                      <div class="ui action input">
+                        <input placeholder="Increment By" type="text" ng-model="counterincrementlabel">
+                        <button class="ui teal right icon button" ng-click="addCounter();">
+                          <i class="plus icon"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="two fields">
+              <div class="field">
+                <label>Checkbox</label>
+                <div class="ui fluid action input">
+                  <input type="text" placeholder="Label" ng-model="checkboxlabel">
+                  <button class="ui teal right icon button" ng-click="addCheckbox();">
+                    <i class="plus icon"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="field">
+                <div class="ui fluid form">
+                  <div class="two fields">
+                    <div class="field">
+                      <label>Rating</label>
+                      <input placeholder="Label" type="text" ng-model="ratinglabel">
+                    </div>
+                    <div class="field">
+                      <label>Max Rating</label>
+                      <div class="ui action input">
+                        <input placeholder="Max rating" type="text" ng-model="ratingmaxlabel">
+                        <button class="ui teal right icon button" ng-click="addRating();">
+                          <i class="plus icon"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </form>
+    </div>
+  </div>
+  <div class="four wide column" ng-repeat="component in templatecomp">
+    <div ng-switch="component.type">
+      <div class='ui segment' ng-switch-when="0">
+        <div class="field">
+          <strong>{{ component.name }}</strong>
+          <div class="ui fluid input">
+            <input type="text" placeholder="{{ component.name }}">
+          </div>
+        </div>
+      </div>
+      <div class='ui segment' ng-switch-when="1">
+        <div class="field">
+          <strong>{{ component.name }}</strong>
+          <div class="three ui buttons">
+            <button class="ui negative button" ng-click="decrement(component);">-</button>
+            <button class="ui disabled button">{{ component.value }}</button>
+            <button class="ui positive button" ng-click="increment(component);">+</button>
+          </div>
+        </div>
+      </div>
+      <div class='ui segment' ng-switch-when="2">
+        <div class="field">
+          <div class="ui checkbox">
+            <input type="checkbox" name="example">
+            <label>{{ component.name }}</label>
+          </div>
+        </div>
+      </div>
+      <div class='ui segment' ng-switch-when="3">
+        <strong>{{ component.name }}</strong>
+        <div style="text-align: center">
+          <div class="ui massive star rating" data-max-rating="{{ component.max }}" ng-init="$('.ui.rating').rating();"></div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
