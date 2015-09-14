@@ -83,7 +83,13 @@
           </div>
         </div>
       </form>
-      <div class="sixteen wide grid ui centered" style="padding-bottom: 5px;">
+      <div class="ui form">
+        <div class="field">
+          <label>Identifier Field</label>
+          <select class="ui dropdown" id="idpicker" ng-model="idenselect" ng-options="component.id as component.name for component in templatecomp | filter:component.type=='0'">
+            <option value="">Which text field is used to identify entries? (Ex. Team #/Team Name)</option>
+          </select>
+        </div>
         <button class="ui positive button" ng-click="commitTemplate();">
           Save
         </button>
@@ -92,38 +98,98 @@
   </div>
   <div class="four wide column" ng-repeat="component in templatecomp">
     <div ng-switch="component.type">
-      <div class='ui segment' ng-switch-when="0">
-        <div class="field">
-          <strong>{{ component.name }}</strong>
-          <div class="ui fluid input">
+      <div class='ui card' ng-switch-when="0">
+        <div class="content">
+          <i class="right floated close icon" ng-click="templatecomp.splice($index,1)"></i>
+          <div class="header">{{ component.name }}</div>
+          <div class="description ui fluid input" style="text-align: center">
             <input type="text" placeholder="{{ component.name }}">
           </div>
         </div>
       </div>
-      <div class='ui segment' ng-switch-when="1">
-        <div class="field">
-          <strong>{{ component.name }}</strong>
-          <div class="three ui buttons">
-            <button class="ui negative button" ng-click="decrement(component);">-</button>
-            <button class="ui disabled button">{{ component.value }}</button>
-            <button class="ui positive button" ng-click="increment(component);">+</button>
+      <div class='ui card' ng-switch-when="1">
+        <div class="content">
+          <i class="right floated close icon" ng-click="templatecomp.splice($index,1)"></i>
+          <div class="header">{{ component.name }}</div>
+          <div class="description" style="text-align: center">
+            <div class="three ui buttons">
+              <button class="ui negative button" ng-click="decrement(component);">-</button>
+              <button class="ui disabled button">{{ component.value }}</button>
+              <button class="ui positive button" ng-click="increment(component);">+</button>
+            </div>
           </div>
         </div>
       </div>
-      <div class='ui segment' ng-switch-when="2">
-        <div class="field">
-          <div class="ui checkbox">
-            <input type="checkbox" name="example">
-            <label>{{ component.name }}</label>
+      <div class='ui card' ng-switch-when="2">
+        <div class="content">
+          <i class="right floated close icon" ng-click="templatecomp.splice($index,1)"></i>
+          <div class="description">
+            <div class="field">
+              <div class="ui checkbox">
+                <input type="checkbox" name="example">
+                <label>{{ component.name }}</label>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div class='ui segment' ng-switch-when="3">
-        <strong>{{ component.name }}</strong>
-        <div style="text-align: center">
-          <div class="ui massive star rating" data-max-rating="{{ component.max }}" ng-init="$('.ui.rating').rating();"></div>
+      <div class='ui card' ng-switch-when="3">
+        <div class="content">
+          <i class="right floated close icon" ng-click="templatecomp.splice($index,1)"></i>
+          <div class="header">{{ component.name }}</div>
+          <div class="description" style="text-align: center">
+            <div class="ui massive star rating" data-max-rating="{{ component.max }}" ng-init="$('.ui.rating').rating();"></div>
+          </div>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+
+<div class="ui basic modal yes">
+  <i class="close icon"></i>
+  <div class="header">
+    Success
+  </div>
+  <div class="image content">
+    <div class="image">
+      <i class="checkmark icon"></i>
+    </div>
+    <div class="description">
+      <p>Your template has been successfully created. You can access it from the main page. Would you like me to take you there?</p>
+    </div>
+  </div>
+  <div class="actions">
+    <div class="two fluid ui inverted buttons">
+      <a href="#/" onclick="$('.ui.basic.modal').modal('hide');">
+        <div class="ui green basic inverted button">
+          Yes
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="ui basic modal no">
+  <i class="close icon"></i>
+  <div class="header">
+    Failure
+  </div>
+  <div class="image content">
+    <div class="image">
+      <i class="checkmark icon"></i>
+    </div>
+    <div class="description">
+      <p>Sorry, your template couldn't be created at this time.</p>
+    </div>
+  </div>
+  <div class="actions">
+    <div class="two fluid ui inverted buttons">
+      <a onclick="$('.ui.basic.modal').modal('hide');">
+        <div class="ui red basic inverted button">
+          Close
+        </div>
+      </a>
     </div>
   </div>
 </div>

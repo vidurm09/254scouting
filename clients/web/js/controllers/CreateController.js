@@ -2,14 +2,22 @@ app.controller('CreateController', ['$scope', 'components', '$sce', function($sc
   components.success(function(data) {
     $scope.components = data;
     $scope.templatecomp = [];
+    $scope.textcounter = 0;
+
+    $('select.dropdown').dropdown();
 
     $scope.addText = function() {
+      console.log($scope.templatecomp);
       if($scope.textlabel.length > 0) {
         $scope.templatecomp.push({
           "name" : $scope.textlabel,
-          "type" : 0
+          "type" : 0,
+          "identifier" : false,
+          "textid" : $scope.textcounter
         });
         $scope.textlabel = '';
+        $scope.textcounter++;
+        $('select.dropdown').dropdown();
       }
     };
 
@@ -61,7 +69,16 @@ app.controller('CreateController', ['$scope', 'components', '$sce', function($sc
       }
     };
 
+    $scope.pickIdentifier = function() {
+      for(var i = 0; i < $scope.templatecomp.length; i++) {
+        if($scope.templatecomp[i].textid == $("#idpicker").val()) {
+          $scope.templatecomp[i].identifier = true;
+        }
+      }
+    };
+
     $scope.commitTemplate = function() {
+      $scope.pickIdentifier();
       for(var i = 0; i < $scope.templatecomp.length; i++)
         delete $scope.templatecomp[i]["$$hashKey"]
       $scope.settings = {
@@ -78,7 +95,12 @@ app.controller('CreateController', ['$scope', 'components', '$sce', function($sc
         }
       }
       $.ajax($scope.settings).done(function (response) {
-        console.log(response);
+        if(response.success=="true") {
+          $('.ui.basic.modal.yes').modal('show');
+        }
+        else {
+          $('.ui.basic.modal.no').modal('show');
+        }
       });
     };
   });
