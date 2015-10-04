@@ -1,4 +1,4 @@
-app.controller('EventController', ['$scope', 'templates', 'event', '$http', function($scope, templates, event, $http) {
+app.controller('EventController', ['$scope', 'templates', 'event', '$http', '254_CONFIG', function($scope, templates, event, $http, config) {
   event.success(function(data) {
     $scope.events = data["data"]
 
@@ -23,6 +23,7 @@ app.controller('EventController', ['$scope', 'templates', 'event', '$http', func
     };
 
     $scope.reviewEvent = function() {
+      $scope.new = {}
       $scope.new.event = $scope.findEventByKey($("#eventcode").val());
       if($scope.new.event != null) {
         window.location.href = window.location.href.split("#")[0]+"#/event/scout/" + $scope.new.event.eventkey;
@@ -47,9 +48,9 @@ app.controller('EventController', ['$scope', 'templates', 'event', '$http', func
       $scope.newEvent.scoutingteam = $("#scoutingteam").val();
       $scope.newEvent.template = $scope.templatecodes[$("#idpicker").val()];
       if($scope.newEvent.name.length > 0 && $scope.newEvent.scoutingteam.length > 0 && $scope.newEvent.template.length > 0) {
-        $http.post("http://localhost:8080/api/event", $scope.newEvent).success(function(data, status) {
+        $http.post(config.serverURL + "/api/event", $scope.newEvent).success(function(data, status) {
           if(data['success'] == "true") {
-            window.location.href = window.location.href.split("#")[0]+"#/event/scout/" + data.data.eventkeydb;
+            window.location.href = window.location.href.split("#")[0]+"#/event/scout/" + data.data.eventkey;
           }
           else {
             $("#ohno").fadeIn();

@@ -1,5 +1,5 @@
-app.factory('templates', ['$http', function($http) {
-  return $http.get('http://localhost:8080/api/template')
+app.factory('templates', ['$http', '254_CONFIG', function($http, config) {
+  return $http.get(config.serverURL + '/api/template')
          .success(function(data) {
            return data["data"];
          })

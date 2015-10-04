@@ -1,5 +1,5 @@
-app.factory('event', ['$http', function($http) {
-  return $http.get('http://localhost:8080/api/event')
+app.factory('event', ['$http', '254_CONFIG', function($http, config) {
+  return $http.get(config.serverURL + '/api/event')
          .success(function(data) {
            return data;
          })

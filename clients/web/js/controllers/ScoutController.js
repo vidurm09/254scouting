@@ -1,4 +1,4 @@
-app.controller('ScoutController', ['$scope', 'event', 'templates', '$routeParams', '$http', function($scope, event, template, $routeParams, $http) {
+app.controller('ScoutController', ['$scope', 'event', 'templates', '$routeParams', '$http', '254_CONFIG', function($scope, event, template, $routeParams, $http, config) {
   template.success(function (tempdata) {
     tempdata = tempdata["data"];
     event.success(function(data) {
@@ -85,7 +85,7 @@ app.controller('ScoutController', ['$scope', 'event', 'templates', '$routeParams
             templateid: $scope.template._id,
             entry: match
           }
-          $http.post("http://localhost:8080/api/entry", $scope.newentry).success(function(data, status) {
+          $http.post(config.serverURL + "/api/entry", $scope.newentry).success(function(data, status) {
             if(data['success'] == "true") {
               $scope.reset()
               window.location.href = window.location.href.split("#")[0]+"#/event/scout/" + $scope.event.eventkey + "/" + $scope.scout;

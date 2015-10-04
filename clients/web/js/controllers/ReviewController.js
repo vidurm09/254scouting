@@ -1,4 +1,4 @@
-app.controller('ReviewController', ['$scope', 'event', 'templates', '$routeParams', '$http', 'entries', function($scope, event, template, $routeParams, $http, entries) {
+app.controller('ReviewController', ['$scope', 'event', 'templates', '$routeParams', '$http', 'entries', '254_CONFIG', 'websocket', function($scope, event, template, $routeParams, $http, entries, config, $websocket) {
   template.success(function (tempdata) {
     tempdata = tempdata["data"];
     event.success(function(data) {
@@ -6,7 +6,7 @@ app.controller('ReviewController', ['$scope', 'event', 'templates', '$routeParam
         setTimeout(function() {
           $('thead').popup();
           $('.sortable.table').tablesort();
-        }, 10);
+        }, i);
 
       data = data.data;
       for(var i = 0; i < data.length; i++) {
@@ -40,6 +40,7 @@ app.controller('ReviewController', ['$scope', 'event', 'templates', '$routeParam
         }
       }
 
+      
       entries.event($routeParams.eventkey, function(entrydata) {
         if(entrydata.success == "true") {
           $scope.entries = entrydata.data;
@@ -88,10 +89,10 @@ app.controller('ReviewController', ['$scope', 'event', 'templates', '$routeParam
           console.error("Something bad happened on the server side.");
         }
       });
-
-      $scope.moredetails = function(id) {
-        console.log(id);
-      }
     });
   });
+  $scope.moredetails = function(id) {
+    console.log(id);
+    window.location.href = window.location.href + "/review/" + id;
+  };
 }]);

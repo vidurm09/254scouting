@@ -1,12 +1,15 @@
 global.mongoose = require('mongoose');
 global.Schema = mongoose.Schema;
-mongoose.connect('mongodb://localhost/254scouting');
+var config = require('./config')
+console.log(config.mongodb.url + config.mongodb.database);
+mongoose.connect(config.mongodb.url + config.mongodb.database);
 
 var path = require('path');
 var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
 
+var websocket = require("./websocket");
 var template = require('./templates');
 var events = require('./events');
 var entries = require('./entry');
@@ -32,9 +35,13 @@ router.route('/event').get(events.findEvents);
 
 router.route('/entry').post(entries.createEntry);
 router.route('/entry').get(entries.findEntries);
+router.route('/entry/specific').get(entries.findEntriesWithParam);
+router.route('/entry/delete').get(entries.removeEntry);
+
 
 router.route('/components').get(function (req, res) { res.sendFile(path.join(__dirname, 'components.json')); });
 
 app.use('/api', router);
-app.listen(port);
-console.log('Doing magic on port ' + port);
+app.listen(config.host.port,config.host.ip);
+
+console.log('Doing magic on port ' + config.host.port + " & " + config.websocket.port);

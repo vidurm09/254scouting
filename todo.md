@@ -8,6 +8,11 @@
 - [x] Save matches
   - [x] Client side
   - [x] Server side
-- [ ] Detailed View
+- [x] Detailed View
+- [ ] Websockets
+  - [x] Basic reload
+  - [ ] More discreet update?
 - [ ] Drawing Component
-- [ ] Client & Server config files
+- [ ] Better intro page
+- [ ] Hosting?
+- [x] Client & Server config files

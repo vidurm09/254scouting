@@ -1,4 +1,3 @@
-
 var eventSchema = new Schema({
   name: {type: String, required: true},
   scoutingteam: {type: String, required: true},

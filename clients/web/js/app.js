@@ -1,4 +1,4 @@
-/*angular.module('ScoutingApp', ['ngRoute']);*/
+'use strict';
 var app = angular.module('ScoutingApp', ['ngRoute', 'ngSanitize']);
 app.config(function ($routeProvider) {
   $routeProvider
@@ -29,6 +29,10 @@ app.config(function ($routeProvider) {
     .when('/event/scout/:eventkey', {
       controller: 'ReviewController',
       templateUrl: 'views/review.html'
+    })
+    .when('/event/scout/:eventkey/review/:target', {
+      controller: 'ReviewSingleController',
+      templateUrl: 'views/reviewsingle.html'
     })
     .otherwise({
       redirectTo: '/'

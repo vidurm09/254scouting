@@ -1,4 +1,4 @@
-app.controller('CreateController', ['$scope', 'components', '$sce', function($scope, components, $sce) {
+app.controller('CreateController', ['$scope', 'components', '$sce', "254_CONFIG", function($scope, components, $sce, config) {
   components.success(function(data) {
     $scope.components = data;
     $scope.templatecomp = [];
@@ -84,7 +84,7 @@ app.controller('CreateController', ['$scope', 'components', '$sce', function($sc
       $scope.settings = {
         "async": true,
         "crossDomain": true,
-        "url": "http://localhost:8080/api/template",
+        "url": config.serverURL + "/api/template",
         "method": "POST",
         "headers": {},
         "data": {

@@ -1,0 +1,52 @@
+<div class="ui page grid">
+  <div class="sixteen wide column">
+    <div class="ui segment" style="overflow-x: scroll">
+      <h1 class="ui header" style="margin-top: 0px; padding-top: 0px;">
+        {{ idname }}: {{ route.target }}
+        <div class="sub header">{{ event.name }} - {{ event.scoutingteam }}</div>
+      </h1>
+      <button class="ui left labeled button" ng-click="return()">
+        <i class="icon left arrow"></i>
+        Go back to view the whole event.
+      </button>
+      <table class="ui celled selectable sortable table">
+        <thead data-content="Click on a column header to sort.">
+          <tr>
+            <th ng-repeat="(key, value) in entries[0].data" ng-if="key!=idname"> {{ key }}</th>
+            <th>Scouted By</th>
+            <th>Delete Entry</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="entry in entries" >
+            <td ng-repeat="(key, value) in entry.data" ng-if="key!=idname">{{ value }}</td>
+            <td>{{ entry.scoutedby }}</td>
+            <td>
+              <button class="ui icon negative button" ng-click="removeEntry(entry.entryid)">
+                <i class="trash icon"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="ui small test modal">
+  <div class="header">
+    Delete an entry
+  </div>
+  <div class="content">
+    <p>Are you sure you want to delete that entry?</p>
+  </div>
+  <div class="actions">
+    <div class="ui button" onclick="$('.ui.modal').modal('hide');">
+      No
+    </div>
+    <div class="ui negative right labeled icon button" ng-click="deleteEntry()">
+      Yes
+      <i class="trash icon"></i>
+    </div>
+  </div>
+</div>
