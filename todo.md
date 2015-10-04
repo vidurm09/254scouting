@@ -1,0 +1,13 @@
+# 254 Scouting App - Todo
+- [x] Reset input
+- [x] Events
+  - [x] Client sessions
+  - [x] Server side Events
+    - [x] Match/event linking
+  - [x] Client side event creation
+- [x] Save matches
+  - [x] Client side
+  - [x] Server side
+- [ ] Detailed View
+- [ ] Drawing Component
+- [ ] Client & Server config files

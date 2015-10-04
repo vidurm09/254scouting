@@ -9,12 +9,13 @@ var app = express();
 
 var template = require('./templates');
 var events = require('./events');
+var entries = require('./entry');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use('/', function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
   next();
 });
 
@@ -28,6 +29,9 @@ router.route('/template').get(template.findTemplates);
 
 router.route('/event').post(events.createEvent);
 router.route('/event').get(events.findEvents);
+
+router.route('/entry').post(entries.createEntry);
+router.route('/entry').get(entries.findEntries);
 
 router.route('/components').get(function (req, res) { res.sendFile(path.join(__dirname, 'components.json')); });
 

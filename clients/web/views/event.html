@@ -1,0 +1,62 @@
+<div class="ui page grid">
+  <div class="sixteen wide column">
+    <div class="ui segment">
+      <form class="ui form">
+        <h1>Start scouting an event:</h1>
+        <div class="two fields">
+          <div class="field">
+            <label>Event Code</label>
+            <input type="text" id="eventcode" ng-model="eventcode" placeholder="Event Code">
+          </div>
+          <div class="field">
+            <label>Name</label>
+            <input type="text" id="scoutname" ng-model="scoutname" placeholder="Name">
+          </div>
+        </div>
+      </form>
+      <div class="ui negative message" id="nofinderror" style="display:none;">
+        <div class="header">
+          Uh oh...
+        </div>
+        <p>We couldn't find an event with that code...</p>
+      </div>
+      <button class="ui positive button" ng-click="scoutEvent()">
+        Scout
+      </button>
+      <button class="ui blue button" ng-click="reviewEvent()">
+        Review Data
+      </button>
+      <div class="ui horizontal divider">
+        Or
+      </div>
+      <form class="ui form">
+        <h1>Or set up a new event:</h1>
+        <div class="ui negative message" id="ohno" style="display: none">
+          <div class="header">
+            Uh oh...
+          </div>
+          <p>Looks like something went wrong... Check the console for more details</p>
+        </div>
+        <div class="two fields">
+          <div class="field">
+            <label>Event</label>
+            <input type="text" id="eventname" ng-model="eventname" placeholder="Event">
+          </div>
+          <div class="field">
+            <label>Scouting Team</label>
+            <input type="text" id="scoutingteam" ng-model="scoutingteam" placeholder="Scouting Team">
+          </div>
+        </div>
+        <div class="field">
+          <label>Template</label>
+          <select class="ui dropdown" id="idpicker" ng-model="idenselect" ng-options="template.id as (template.title + ' by ' + template.author) for template in templates">
+            <option value="">Template</option>
+          </select>
+        </div>
+      </form>
+      <button class="ui positive button" ng-click="createEvent()">
+        Create
+      </button>
+    </div>
+  </div>
+</div>

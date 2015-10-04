@@ -1,0 +1,34 @@
+<div class="ui page grid">
+  <div class="sixteen wide column">
+    <div class="ui segment">
+      <h1 class="ui header">
+        {{ template.title }}
+        <div class="sub header">{{ event.name }} - {{ event.scoutingteam }}</div>
+      </h1>
+      <p>{{ template.description }}</p>
+      <div class="ui negative message" id="ohno" style="display:none;">
+        <div class="header">
+          Uh oh...
+        </div>
+        <p>Something went wrong while retrieving the data for this event.</p>
+      </div>
+    </div>
+  </div>
+  <div class="sixteen wide column">
+    <div class="ui segment">
+      <table class="ui celled selectable sortable table">
+        <thead ng-init="$('thead').popup();" data-content="Click on a column header to sort.">
+          <tr>
+            <th ng-repeat="header in tableheader">{{ header }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="(key, value) in tabledata" ng-click="moredetails(key)">
+            <td>{{ key }}</td>
+            <td ng-repeat="header in tableheader" ng-if="header!=idname">{{ value[header] }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

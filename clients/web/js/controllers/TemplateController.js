@@ -16,25 +16,32 @@ app.controller('TemplateController', ['$scope', 'templates', '$routeParams', fun
       item.value -= item.increment;
     }
 
-    $scope.read = function() {
-      console.log(data);
+    $scope.read = function(callback) {
+      var match = {}
       for(var i = 0; i < $scope.template.components.length; i++) {
         var curr = $scope.template.components[i];
         switch(curr.type) {
           case 0:
-            console.log(curr.name + " " + $("#" + curr.$$hashKey.replace(":", "\\:")).val());
+            match[curr.name] = $("#" + curr.$$hashKey.replace(":", "\\:")).val();
             break;
           case 1:
-            console.log(curr.name + " " + curr.value);
+            match[curr.name] = curr.value;
             break;
           case 2:
-            console.log(curr.name + " " + $("#" + curr.$$hashKey.replace(":", "\\:")).val());
+            match[curr.name] = $("#" + curr.$$hashKey.replace(":", "\\:")).prop('checked');
             break;
           case 3:
-            console.log(curr.name + " " + $("#" + curr.$$hashKey.replace(":", "\\:")).rating('get rating'))
+            match[curr.name] = $("#" + curr.$$hashKey.replace(":", "\\:")).rating('get rating');
+            break;
         }
       }
+      callback(match);
     }
 
+    $scope.save = function() {
+      $scope.read(function(data) {
+        console.log(data);
+      });
+    };
   });
 }]);

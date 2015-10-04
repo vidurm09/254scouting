@@ -3,7 +3,8 @@ var templateSchema = new Schema({
   description: {type: String},
   author: {type: String, required: true},
   components: [{}],
-  featured: {type: Boolean, required: false}
+  featured: {type: Boolean, required: false},
+  results: []
 });
 
 var Template = mongoose.model('Template', templateSchema);

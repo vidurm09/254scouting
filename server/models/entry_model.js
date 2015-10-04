@@ -1,9 +1,9 @@
 var entrySchema = new Schema({
-  name: {type: String, required: true, unique: true},
+  entryid: String,
   scoutedby: String,
-  eventid: Schema.types.ObjectId,
-  entries: [Object],
-  comments: [Object]
+  eventkey: String,
+  templateid: String,
+  data: {}
 });
 
 var Entry = mongoose.model('Entry', entrySchema);
