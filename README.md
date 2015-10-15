@@ -1,11 +1,12 @@
-#254 Scouting
+# 254 Scouting
 
-<h3>Setup</h3>
-* Download/Install Mongo
+## Setup
+1. Download/Install Mongo
 * <code>git clone github.com/vidurm09/254scouting.git</code>
-* <code>cd 254scouting/server</code>
+* <code>cd 254scouting</code>
 * In config.js set <code>config.host.ip = "<i>Your IP</i>"</code>
-* <code>cd ../clients/web/js</code>
-* In config.js set <code>serverURL: 'http://<i>Your IP</i>:8080'</code>
-* In config.js set <code>websockets: 'ws://<i>Your IP</i>:8082'</code>
-* <code> cd ../.. </code>
+* <code>cd ../web/js</code>
+* In config.js set <code>serverURL: 'http://<i>Your IP</i>:80'</code>
+* In config.js set <code>websockets: 'ws://<i>Your IP</i>:82'</code>
+* <code>cd ../ </code>
+* <code>node server.js</code>
