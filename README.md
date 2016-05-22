@@ -1,4 +1,5 @@
 # 254 Scouting
+A webapp used to help robotics teams scout potential alliance members at tournaments and other events. Uses a templating system to allow the team to create a template in advance, and then to use that template to scout all the teams at an event.
 
 ## Setup
 1. Download/Install Mongo
